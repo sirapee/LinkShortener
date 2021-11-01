@@ -53,7 +53,7 @@ namespace LinkShortener.RepositoryImplemtation
         {
             var link = await _dataContext.Link.Where(l => l.ShortAlias == shortAlias)
                 .FirstOrDefaultAsync();
-            if (link == null)
+            if (link != null)
             {
                 link.VisitedCount = link.VisitedCount + 1;
                 link.UpdatedAt = System.DateTime.Now;

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f8a8a52d-16eb-439b-96bd-ee543f5e30a1": {
+      "ProjectGuid": "f8a8a52d-16eb-439b-96bd-ee543f5e30a1",
+      "DisplayName": "LinkShortener",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
