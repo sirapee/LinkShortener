@@ -1,0 +1,8 @@
+C:\Users\Admin\Documents\Repositories\Tests\linkShortener\linkShortener\linkShortener\obj\Debug\net6.0\LinkShortener.GlobalUsings.g.cs
+C:\Users\Admin\Documents\Repositories\Tests\linkShortener\linkShortener\linkShortener\obj\Debug\net6.0\LinkShortener.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\Repositories\Tests\linkShortener\linkShortener\linkShortener\obj\Debug\net6.0\LinkShortener.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\Repositories\Tests\linkShortener\linkShortener\linkShortener\obj\Debug\net6.0\LinkShortener.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\Repositories\Tests\linkShortener\linkShortener\linkShortener\obj\Debug\net6.0\LinkShortener.AssemblyInfo.cs
+C:\Users\Admin\Documents\Repositories\Tests\linkShortener\linkShortener\linkShortener\obj\Debug\net6.0\LinkShortener.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Repositories\Tests\linkShortener\linkShortener\linkShortener\obj\Debug\net6.0\LinkShortener.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Admin\Documents\Repositories\Tests\linkShortener\linkShortener\linkShortener\obj\Debug\net6.0\LinkShortener.MvcApplicationPartsAssemblyInfo.cache
