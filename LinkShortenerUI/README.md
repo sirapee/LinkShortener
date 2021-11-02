@@ -1,27 +1,24 @@
-# LinkShortenerUI
+# Link Shortener
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.12.
+A URL shortening web application is where the user passes the full URL such as https://facebook.com/home in the giving field and it display a short URL such as http://short.est/GeAi9K for the user. There is another field where the user can input the shortened URL which will return
+the long URL. Using the example above, visiting http://short.est/GeAi9K should return  https://facebook.com/home.
 
-## Development server
+There is a session on the web application where you can see all the full url which as been shortened on the application by clicking on a GET ALL URL button.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The Web application was developed using Angular 11
 
-## Code scaffolding
+# list of command
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ng serve = To run the application
 
-## Build
+ng build = To build the application
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ng build --prod = To build for production
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# To change the baseUrl of the application
 
-## Running end-to-end tests
+The baseUrl is said to be the url at which the application is using to communicate with the backend and it can be find inside the src folder in the application folder with the following path
+src/environment and there are two different environment files, 1 for test and the other for production(environment.ts and environment.prod.ts)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

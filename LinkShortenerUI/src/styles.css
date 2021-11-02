@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
+.myInputStyle {
+    border: 1px solid #e1e8ed;
+    border-radius: 30px;
+    padding: 10px 20px 10px 43px;
+    width: 100%;
+}
