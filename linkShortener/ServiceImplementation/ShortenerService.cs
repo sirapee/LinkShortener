@@ -7,40 +7,42 @@ namespace LinkShortener.ServiceImplementation
 {
     public class ShortenerService : IShortenerService
     {
-        private const string Alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
-        private static readonly IDictionary<char, int> AlphabetIndex;
-        private static readonly int Base = Alphabet.Length;
-        
 
-        static ShortenerService()
+        private static List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+        private static List<char> characters = new List<char>()
+            {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+            'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
+            'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+            'Q', 'R', 'S',  'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-', '_'};
+
+        private string GetURL()
         {
-            AlphabetIndex = Alphabet
-                .Select((c, i) => new { Index = i, Char = c })
-                .ToDictionary(c => c.Char, c => c.Index);
-        }
-        
-        public string GenerateShortString(int seed)
-        {
-            if (seed < Base)
+            string URL = "";
+            Random rand = new Random();
+            // run the loop till I get a string of 10 characters  
+            for (int i = 0; i < 11; i++)
             {
-                return Alphabet[0].ToString();
+                // Get random numbers, to get either a character or a number...  
+                int random = rand.Next(0, 3);
+                if (random == 1)
+                {
+                    // use a number  
+                    random = rand.Next(0, numbers.Count);
+                    URL += numbers[random].ToString();
+                }
+                else
+                {
+                    random = rand.Next(0, characters.Count);
+                    URL += characters[random].ToString();
+                }
             }
-            
-            var str = new StringBuilder();
-            var i = seed;
-
-            while (i > 0)
-            {
-                str.Insert(0, Alphabet[i % Base]);
-                i /= Base;
-            }
-
-            return str.ToString();
+            return URL;
         }
 
-        public int RestoreSeedFromString(string str)
+        public string GenerateShortString()
         {
-            return str.Aggregate(0, (current, c) => current * Base + AlphabetIndex[c]);
+            return GetURL();
         }
+
     }
 }

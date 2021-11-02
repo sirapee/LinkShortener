@@ -28,10 +28,10 @@ namespace LinkShortener.Configurations
         
         public static void SetupSqlServerDbSettings(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DataContext>(x => x.UseSqlServer(configuration.GetConnectionString("SQLConnection")
+            services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase(configuration.GetConnectionString("DatabaseName")
                  , builder =>
                  {
-                     builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+                     
                  }));
             services.AddMemoryCache();
 

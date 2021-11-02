@@ -77,8 +77,9 @@ namespace LinkShortener.ServiceImplementation
             {
                 try
                 {
-                    var id = ObjectId.GenerateNewId().ToString();
-                    var shortAlias = _shortenerService.GenerateShortString(id.GetHashCode());
+
+                    string id = Guid.NewGuid().ToString();
+                    var shortAlias = _shortenerService.GenerateShortString();
                     var shortLink = _domainName + shortAlias;
                     var newLink = new Link
                     {

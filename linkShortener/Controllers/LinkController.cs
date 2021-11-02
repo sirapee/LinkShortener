@@ -14,18 +14,15 @@ namespace LinkShortener.Controllers
     public class LinkController : ControllerBase
     {
         private readonly ILinkService _linkService;
-        private readonly string _domainName;
-        private string _userId =>
-            HttpContext.Session.GetString("UserId");
+
         
         public LinkController(ILinkService linkService,
             IConfiguration configuration)
         {
             _linkService = linkService;
-            _domainName = configuration.GetValue<string>("DomainName");
         }
         
-        [HttpPost("api/encode")]
+        [HttpGet("api/encode")]
         public async Task<IActionResult> GetShortLink(string fullLink)
         {
             var shortLink =  await _linkService.GetShortLink(fullLink);
@@ -37,7 +34,7 @@ namespace LinkShortener.Controllers
  
         }
 
-        [HttpPost("api/decode")]
+        [HttpGet("api/decode")]
         public async Task<IActionResult> GetFullLink(string shortLink)
         {
             var fullLink = await _linkService.GetFullLink(shortLink);

@@ -10,13 +10,23 @@ namespace LinkShortener.RepositoryImplemtation
 {
     public class LinkRepository : ILinkRepository
     {
-   
+     
         private readonly DataContext _dataContext;
         public LinkRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
 
         }
+        /*private readonly DataContext _dataContext;
+        public LinkRepository(DataContext dataContext)
+        {
+            var options = new DbContextOptionsBuilder<DataContext>()
+               .UseInMemoryDatabase(databaseName: "LinkShortener")
+               .Options;
+
+            _dataContext = new DataContext(options);
+
+        }*/
         
         public async Task<IEnumerable<Link>> GetAll()
         {
@@ -53,6 +63,11 @@ namespace LinkShortener.RepositoryImplemtation
         {
             var link = await _dataContext.Link.Where(l => l.ShortAlias == shortAlias)
                 .FirstOrDefaultAsync();
+            if (link == null)
+            {
+                link = await _dataContext.Link.Where(l => l.ShortLink == shortAlias)
+                .FirstOrDefaultAsync();
+            }
             if (link != null)
             {
                 link.VisitedCount = link.VisitedCount + 1;
