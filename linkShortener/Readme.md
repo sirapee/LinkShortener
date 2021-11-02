@@ -21,4 +21,4 @@ Usage
 3. Run the application, swagger is configured with the api for ease of testing
 
 
-NOTE: A postman collection has also been added to the to project, you can import and run form post. Change the base url to the correct value
+NOTE: A postman collection has also been added to the to project see link https://go.postman.co/workspace/My-Workspace~ead04592-78f4-4172-8ad7-7f39b97f18b3/collection/1408454-59c951ca-0757-4240-9c40-40ce44a797e8
