@@ -26,39 +26,56 @@ namespace LinkShortener.Controllers
         }
         
         [HttpPost("api/encode")]
-        public async Task<string> GetShortLink(string fullLink)
+        public async Task<IActionResult> GetShortLink(string fullLink)
         {
-            return await _linkService.GetShortLink(fullLink);
+            var shortLink =  await _linkService.GetShortLink(fullLink);
+            return Ok(new
+            {
+                isSuccessful = true,
+                shortLink = shortLink
+            }); 
  
         }
 
         [HttpPost("api/decode")]
-        public async Task<string> GetFullLink(string shortLink)
+        public async Task<IActionResult> GetFullLink(string shortLink)
         {
-            return await _linkService.GetFullLink(shortLink);
+            var fullLink = await _linkService.GetFullLink(shortLink);
 
+            return Ok(new
+            {
+                isSuccessful = true,
+                fullLink = fullLink
+            }); 
         }
 
         [HttpGet("api/list")]
-        public async Task<IEnumerable<dynamic>> GetAllLinks()
+        public async Task<IActionResult> GetAllLinks()
         {
             var links = await _linkService.GetAllLinks();
-
-            return links.Select(l => new { ShortLink = l.ShortLink, l.VisitedCount, l.ShortAlias, l.FullLink});
+            return Ok(new
+            {
+                isSuccessful = true,
+                links = links.Select(l => new { ShortLink = l.ShortLink, l.VisitedCount, l.ShortAlias, l.FullLink })
+             });
         }
 
         [HttpGet("api/statistics/{urlPath}")]
-        public async Task<dynamic> Statistics(string urlPath)
+        public async Task<IActionResult> Statistics(string urlPath)
         {
             var link = await _linkService.GetDetailsByAlias(urlPath);
 
-            return  new
+            return Ok(new
             {
-                VisitedCount = link.VisitedCount,
-                CreatedDate = link.CreatedAt,
-                ShortLink = link.ShortLink,
-                FullLink = link.FullLink,
-            };
+                isSuccessful = true,
+                link = new
+                {
+                    VisitedCount = link.VisitedCount,
+                    CreatedDate = link.CreatedAt,
+                    ShortLink = link.ShortLink,
+                    FullLink = link.FullLink,
+                }
+            });
         }
 
         [HttpGet("/{shortAlias}")]
@@ -68,10 +85,18 @@ namespace LinkShortener.Controllers
 
             if (fullLink == null)
             {
-                return NotFound($"Not found link by alias '{shortAlias}'");
+                return NotFound(new
+                {
+                    isSuccessful = false,
+                    fullLink = $"Not found link by alias '{shortAlias}'"
+                });
             }
 
-            return Redirect(fullLink);
+            return Ok(new
+            {
+                isSuccessful = true,
+                fullLink = fullLink
+            });
         }
     }
 }
